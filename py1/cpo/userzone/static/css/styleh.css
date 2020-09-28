@@ -1,0 +1,170 @@
+body,html{
+margin:0px;
+
+}
+#outer{
+min-height:500px;
+//border:20px solid;
+height:auto;
+
+}
+/*#header{
+min-height:150px;
+//border:1px solid;
+width:100%;
+
+}
+#logo{
+min-height:150px;
+width:20%;
+//border:1px solid;
+float:left;
+
+}
+#banner{
+height:150px;
+width:80%;
+float:right;
+//border:1px solid;
+background-color:#499df5;
+text-align:Center;
+font-size:40px;
+font-weight:bold;
+font-family:Bodoni MT Black;
+color:white;
+line-height:150px;
+}*/
+
+#menu{
+min-height:50px;
+width:100%;
+background-color:#88ACE0;
+margin-top:-15px;	
+}
+
+
+#menu ul{
+list-style-type:none;
+text-align:right;
+}
+#menu ul li{
+display:inline-block;
+margin-top:5px;
+width:100px;
+padding:10px;
+//border:2px solid ;
+//background-color:#424242;
+border-radius:20px 0px 20px 0px;
+text-align:center;
+
+}
+
+#menu ul li a{
+text-decoration:none;
+font-size:15px;
+color:white;
+height:100%;
+}
+#menu li a:hover{
+background-color:white;
+height:100%;
+color: #88ACE0;
+padding: 10px;
+width: 100%;
+border-radius:20px 0px 20px 0px;
+transition: all 0.4s ease 0s;
+
+
+}
+.logo{
+    float: left;
+    height: 50px;
+    width:20%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.logo h1{
+   // text-align: justify;
+    color: white;
+    font-family:Georgia;
+    font-size: 50px;
+    letter-spacing: 20px;
+   //position: relative;   
+    }
+@media screen and (max-width:950px)
+{
+
+#menu ul li{
+
+width:100%;
+box-sizing: border-box;
+padding: 10px;
+
+}
+.logo {
+	//float: right;
+width: 100%;
+//box-sizing: inline-block;
+//text-align: center;
+font-family: Arial;
+ 
+}
+.logo h1{
+   // text-align: justify;
+    color: white;
+    font-family:Georgia;
+   // font-size: 20px;
+   // letter-spacing: 50px;
+   //position: relative;   
+   margin-left: 90px;
+    }}
+#main{
+min-height:800px;
+height:auto;
+/idth:100%;
+background-color:white;
+//border:1px solid;
+//margin-top:0px ;
+//overflow-x: auto;
+}
+#slider{
+//height:500px;
+//border:1px solid;
+text-align: center;
+margin-top:-15px; 
+}
+#footer{
+min-height:30px;
+width:100%;
+background-color:#424242;
+//border-radius:10px;
+position: absolute;
+
+}
+#footerl{
+min-height:30px;
+min-width:40%;
+//border:1px solid ;
+border-radius:10px;
+float:left;
+color:white;
+text-align:center;
+font-family:Verdana;
+line-height:50px;
+
+}
+#footerr{
+min-height:30px;
+min-width:45%;
+//border:1px solid white;
+border-radius:10px;
+float:right;
+color:white;
+text-align:center;
+font-family:Verdana;
+line-height:50px;
+overflow-x: auto;
+
+}
+

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Call Processing Optimization</title>
+    {% load static %}
+     <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+     <link rel="icon" type="image/ico" href="{% static 'images/logo.jpg' %}"/>
+    <script>
+        function welcome(){
+          window.alert('Registration is done');
+        }
+
+        var images=["cpo1.jpg","cpo2.jpg","cpo3.jpg","cpo4.jpeg"]
+        var i=0;
+        baseUrl="{% static 'images/' %}";
+        function moveslider()
+        {
+            if(i==images.length)
+            {
+                    i=0;
+            }
+            document.getElementById("slide").src=baseUrl+images[i];
+            i++;
+             window.setTimeout("moveslider()",2000);
+        }
+
+    </script>
+     <style>
+     #slider{
+        min-height: 800px;
+        float:left;
+        width:45%;  
+     }
+
+        input[type=text],input[type=email],input[type=password],textarea{
+        height:30px;
+        width:100%;
+        padding:3px;
+        border-radius:20px;
+        font-size:15px;
+        border:2px solid #88ace0;
+        font-family:Verdana;
+        }
+        /*input[type=text]:focus,input[type=email]:focus,input[type=password]:focus,textarea:focus{
+        background-color: #88ace0;
+        color: white;
+        }*/
+        h2{
+            font-size:30px;
+            color:#88ace0;
+            font-family:Bookman Old Style;
+            text-align:center;
+        }
+           td{
+          font-size:15px;
+        color:#88ace0;
+        font-family:Verdana;
+
+        }
+        input[type=submit]{
+            text-align:center;
+            font-family:verdana;
+            height:50px;
+            font-size:20px;
+            width:60%;
+            padding:5px;
+            background-color:#88ace0;
+            margin:auto;
+            margin-top:0px;
+            color:White;
+           border-radius:20px;
+           border: 0px;
+           margin-left:60px; 
+        }
+
+        input[type=radio]{
+            color: #88ace0;
+          //  height:50px;
+           // position: fixed;
+           display: none;
+          // position: relative;
+           opacity: 0;
+
+
+
+        }
+        .box{
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            //margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 15px;
+
+        }
+        
+        .checkmark{
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 20px;
+                width: 20px;
+                background-color: #88ace0;
+                border-radius: 50%; 
+            }
+            .box:hover input[type=radio] ~.checkmark{
+                background-color: #ccc;
+            }
+            .box input[type=radio]:checked ~ .checkmark
+            {
+                background-color: #88ace0;
+            }
+            .checkmark:after{
+                content: "";
+                position: absolute;
+                display: none;
+            }
+            .box input[type=radio]:checked ~ .checkmark:after{
+               display: inline-block;
+            }
+            .box .checkmark:after{
+                top:4px;
+                left:4px;
+                width:12px;
+                height:12px;
+                border-radius: 50%;
+                background-color: white;
+
+            }
+        #mainright{
+        
+        //background-image:url("{% static 'images/cpo4.jpeg' %}");
+        float: right;
+        //background-image:linear-gradient(to left bottom,blue,skyblue,#499df5);
+        min-height:800px;
+        width:50%;
+       // border: 1px solid;
+       margin-top:-25px; 
+        // margin-bottom: -80px;
+        margin-left: -40px;  
+     overflow-x: auto;
+        }
+        #main{
+          //  overflow-x: auto;
+            min-height: 800px;
+            width:100%;
+         // margin-top: -15px;
+        }
+	    </style>
+</head>
+<body onload="moveslider()">
+<div id="outer">
+    
+    <div id="menu">
+        <div class="logo"><h1>CPO</h1></div>
+        <ul >
+            <li ><a href="{% url 'index' %}">Home</a></li>
+            <li ><a href="{% url 'about' %}">About Us</a></li>
+            <li ><a href="{% url  'registration' %}">Registration</a></li>
+            <li ><a href="{% url 'login' %}">Login</a></li>
+            <li ><a href="{% url 'enquiry' %}">Enquiry</a></li>
+        </ul>
+    </div>
+    <div id="main">
+    <div id="slider">
+        <img id="slide" width="100%" height="820px"/>
+    </div>
+    
+        
+          
+
+        <div id="mainright">
+            <form action="{% url 'custreg' %}" method="post">
+                    {% csrf_token %}
+                <h2 >Customer Registration Form</h2>
+                <table border="0" cellpadding="10" cellspacing="5" style="width:90%;margin:0 auto;">
+                    <tr>
+                        <td width="35%">Enter Name:</td>
+
+                        <td ><input type="text" name="name" required/>
+                        </td>
+
+                    </tr>
+                       
+                    <tr>
+                       <td>Select Gender:</td>
+                        <td><label class="box">Male<input type="radio" name="gender" value="Male"/>
+                            <span class="checkmark"></span></label>
+                        <label class="box" style="margin-top:20px">Female<input type="radio" name="gender" value="Female"/>
+                            <span class="checkmark"></span></label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Enter Address:</td>
+                        <td>
+                            <textarea name="address" required style="height:100px;resize:none;"></textarea>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Enter Nationality</td>
+                        <td><input type="text" name="nationality" required/></td>
+                    </tr>
+
+                    <tr>
+                        <td>Enter Contact Number:</td>
+                        <td><input type="text" name="contactno" required/></td>
+                    </tr>
+
+                    <tr>
+                        <td>Enter Your Email-Id: (Unique)</td>
+                        <td><input type="email" name="emailaddress" required/></td>
+                    </tr>
+
+                    <tr>
+                        <td>Enter Password:</td>
+                        <td><input type="password" name="password" required/></td>
+                    </tr>
+
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><input type="submit" value="Register" onclick=""/></td>
+                    </tr>
+                </table>
+
+            </form>
+             {% if msg %} 
+                       <h1 style="color:red;font-size: 100px">{{ msg }}</h1> 
+             {% endif %}
+        </div>
+    </div>
+    <div id="footer">
+        <div id="footerl">Copyright &copy; to CPO</div>
+        <div id="footerr">Developed By-Leena Jaswani</div>
+
+    </div>
+</div>
+
+</body>
+</html>

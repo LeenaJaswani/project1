@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Call Processing Optimization</title>
+    {% load static %}
+     <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+     <link rel="icon" type="image/ico" href="{% static 'images/logo.jpg' %}"/>
+    <script>
+
+        var images=["cpo1.jpg","cpo2.jpg","cpo3.jpg","cpo4.jpeg"]
+        var i=0;
+        baseUrl="{% static 'images/' %}";
+        function moveslider()
+        {
+            if(i==images.length)
+            {
+                    i=0;
+            }
+            document.getElementById("slide").src=baseUrl+images[i];
+            i++;
+             window.setTimeout("moveslider()",2000);
+        }
+
+    </script>
+</head>
+<body onload="moveslider()">
+<div id="outer">
+   
+    <div id="menu">
+        <div class="logo"><h1>CPO</h1></div>
+        <ul >
+            <li ><a href="{% url 'index' %}">Home</a></li>
+            <li ><a href="{% url 'about' %}">About Us</a></li>
+            <li ><a href="{% url  'registration' %}">Registration</a></li>
+            <li ><a href="{% url 'login' %}">Login</a></li>
+            <li ><a href="{% url 'enquiry' %}">Enquiry</a></li>
+        </ul>
+    </div>
+    <div id="slider">
+        <img id="slide" width="100%" height="500px"/>
+    </div>
+    <div id="main">
+       
+    </div>
+    <div id="footer">
+        <div id="footerl">Copyright &copy; to CPO</div>
+        <div id="footerr">Developed By-Leena Jaswani</div>
+
+    </div>
+</div>
+
+</body>
+</html>

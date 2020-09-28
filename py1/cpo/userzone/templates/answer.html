@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Call Processing Optimization</title>
+    {% load static %}
+     <link href="{% static 'css/styleh.css' %}" rel="stylesheet"/>
+     <link rel="icon" type="image/ico" href="{% static 'images/logo.jpg' %}"/>
+     <script>
+
+        var images=["cpo1.jpg","cpo2.jpg","cpo3.jpg","cpo4.jpeg"]
+        var i=0;
+        baseUrl="{% static 'images/' %}";
+        function moveslider()
+        {
+            if(i==images.length)
+            {
+                    i=0;
+            }
+            document.getElementById("slide").src=baseUrl+images[i];
+            i++;
+             window.setTimeout("moveslider()",4000);
+        }
+
+    </script>
+<style>
+      table{
+    margin:40px auto;
+    width:50%;
+    }
+      h2{
+            font-size:30px;
+            color:#88ace0;
+            font-family:Bookman Old Style;
+            text-align:center;
+            margin-top: 100px;
+        }
+           td{
+          font-size:15px;
+        color:#88ace0;
+        font-family:Verdana;
+
+        }
+          th{
+          font-size:15px;
+            color:#88ace0;
+        font-family:Verdana;
+
+        }
+        
+	    textarea{
+        height:30px;
+        width:80%;
+        padding:3px;
+        border-radius:20px;
+        font-size:15px;
+        border:2px solid #88ace0;
+        font-family:Verdana;
+        }
+          input[type=submit]{
+            text-align:center;
+            font-family:verdana;
+            height:50px;
+            font-size:20px;
+            width:60%;
+            padding:5px;
+            background-color:#88ace0;
+            margin:auto;
+            margin-top:0px;
+            color:White;
+           border-radius:20px;
+           border: 0px;
+           margin-left:30px; 
+        }
+        #main{
+          min-height: 600px;
+            width:100%;
+        // margin-top: 20px;
+
+        }
+        #slider{
+        min-height: 600px;
+        float:left;
+        width:45%;  
+       margin-top: -15px;
+     //  border: 1px solid;
+     }
+        #mainright{
+        
+        //background-image:url("{% static 'images/cpo4.jpeg' %}");
+        float: right;
+        //background-image:linear-gradient(to left bottom,blue,skyblue,#499df5);
+        min-height:600px;
+        width:50%;
+     //  border: 1px solid;
+     //  margin-top:-15px; 
+        // margin-bottom: -80px;
+       // margin-left: -40px;  
+       }
+        
+</style>
+</head>
+<body onload="moveslider()">
+<!--<h1>Welcome</h1>-->
+
+<div id="outer">
+    
+    <div id="menu">
+        <div class="logo"><h1>CPO</h1></div>
+        <ul >
+            <li><a href="{% url 'userzone:homeuser' %}">UserHome</a></li>
+            <li ><a href="{% url 'userzone:discussion' %}" >Discussion</a></li>
+            <li ><a href="{% url 'userzone:searchsolution' %}">SearchSolution</a></li>
+            <li ><a href="{% url 'userzone:complainlog' %}">ComplainLog</a></li>
+            <li ><a href="{% url 'userzone:changepassword' %}">ChangePassword</a></li>
+            <li ><a href="{% url 'userzone:logout' %}">Logout</a></li>
+        </ul>
+    </div>
+<div id="main">
+<div id="slider">
+        <img id="slide" width="100%" height="610px"/>
+        
+    </div>
+    <div id="mainright">
+       
+        <form action="{% url 'userzone:postanswer' %}" method="post">
+            {% csrf_token %}
+            <h2>Discussion Forum</h2>
+            <table border="0" cellspacing="30" style="margin:0 auto;width:100%">
+                <tr>
+                    <td width="20%">
+                        Enter answer
+                    </td>
+                    <td><textarea name="answertext" required style="height:100px ;resize:none"></textarea></td>
+                </tr>
+
+                <tr>
+                    <td><input type="hidden" name="qid" value="{{qid}}"/>
+                    </td>
+                    <td>
+                        <input type="submit" value="Post"/>
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+</div>
+    <div id="footer">
+        <div id="footerl">Copyright &copy; to CPO</div>
+        <div id="footerr">Developed By-Leena Jaswani</div>
+
+    </div>
+</div>
+
+
+
+</body>
+</html>

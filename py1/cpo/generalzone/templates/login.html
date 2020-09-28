@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Call Processing Optimization</title>
+    {% load static %}
+     <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+     <link rel="icon" type="image/ico" href="{% static 'images/logo.jpg' %}"/>
+    <script>
+
+        var images=["cpo1.jpg","cpo2.jpg","cpo3.jpg","cpo4.jpeg"]
+        var i=0;
+        baseUrl="{% static 'images/' %}";
+        function moveslider()
+        {
+            if(i==images.length)
+            {
+                    i=0;
+            }
+            document.getElementById("slide").src=baseUrl+images[i];
+            i++;
+             window.setTimeout("moveslider()",2000);
+        }
+
+    </script>
+    <style>
+        input[type=text],input[type=password]{
+        height:30px;
+        width:100%;
+        padding:3px;
+        border-radius:20px;
+        font-size:15px;
+        border:2px solid #88ace0 ;
+        font-family:Verdana;
+        }
+        h2{
+            font-size:30px;
+            color:#88ace0;
+            font-family:Bookman Old Style;
+            text-align:center;
+            margin:auto;
+            margin-top:200px;
+
+
+        }
+           td{
+          font-size:15px;
+        color:#88ace0;
+        font-family:Verdana;
+       // margin: auto;
+
+        }
+            
+         #slider{
+        min-height: 820px;
+        float:left;
+        width:45%;  
+     }
+        input[type=submit]{
+            text-align:center;
+            font-family:verdana;
+            height:50px;
+            font-size:20px;
+            width:70%;
+            padding:5px;
+            margin-left:40px;
+            margin-top:60px;
+            border: 0px;
+            background-color:#88ace0 ;
+            color:white;
+           border-radius:60px;
+        }
+         #mainright{
+        
+        //background-image:url("{% static 'images/cpo4.jpeg' %}");
+        float: right;
+  //  background-image:linear-gradient(to top ,to left ,to right,to bottom,white 95%,#88ace0 5%);
+    //background-image:linear-gradient(to left,white 95%,#88ace0 5%);
+        min-height:80s0px;
+        width:50%;
+       // border: 1px solid;
+       margin-top:0px; 
+        margin-bottom: 0px;
+        margin-left: -40px; 
+        overflow-x: auto; 
+        }
+        #main{
+            min-height: 800px;
+            width:100%;
+
+        }
+
+    </style>
+</head>
+<body onload="moveslider()">
+<div id="outer">
+    <!-- <div id="header"> 
+        <div id="logo">
+            <img src="{%static 'images/logo1.png' %}" width="100" height="150"/>
+
+            <img src="{%static 'images/po.png' %}" width="120" height="150"/>
+        </div>
+        <div id="banner">
+            CALL PROCESSING OPTIMIZATION
+        </div>
+    </div>-->
+    <div id="menu">
+        <div class="logo"><h1>CPO</h1></div>
+        <ul >
+            <li ><a href="{% url 'index' %}">Home</a></li>
+            <li ><a href="{% url 'about' %}">About Us</a></li>
+            <li ><a href="{% url  'registration' %}">Registration</a></li>
+            <li ><a href="{% url 'login' %}">Login</a></li>
+            <li ><a href="{% url 'enquiry' %}">Enquiry</a></li>
+        </ul>
+    </div>
+     <div id="main">
+    <div id="slider">
+        <img id="slide" width="100%" height="820px"/>
+    </div>
+    
+        <div id="mainright">
+            <Form action="{% url 'validateuser' %}" method="post">
+                {% csrf_token %}
+                <h2 >Login Form</h2>
+                <table border="0" cellpadding="10" cellspacing="5" style="width:90%;margin:80px auto;">
+
+                    <tr>
+                        <td width="35%">Enter User ID:</td>
+                        <td><input type="text" name="userid"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Enter Password:</td>
+                        <td><input type="password" name="password" required/></td>
+                    </tr>
+                    <tr >
+                        <td>&nbsp;</td>
+                       
+                        <td><input type="submit" value="Login"/></td>
+                   
+                    </tr>
+                </table>
+            </Form>
+        </div>
+    </div>
+    <div id="footer">
+        <div id="footerl">Copyright &copy; to CPO</div>
+        <div id="footerr">Developed By-Leena Jaswani</div>
+
+    </div>
+</div>
+
+</body>
+</html>

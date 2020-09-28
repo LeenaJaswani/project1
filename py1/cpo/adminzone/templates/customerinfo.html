@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Call Processing Optimization</title>
+    {% load static %}
+     <link href="{% static 'css/stylea.css' %}" rel="stylesheet"/>
+     <link rel="icon" type="image/ico" href="{% static 'images/logo.jpg' %}"/>
+    <style>
+        textarea{
+        height:100px;
+        width:100%;
+        padding:3px;
+        border-radius:20px;
+        font-size:15px;
+        border:2px solid #88ace0;
+        font-family:Verdana;
+        }
+        h2{
+           font-size:30px;
+            color:#88ace0;
+            font-family:Bookman Old Style;
+            text-align:center;
+            margin-top: 0px;
+        }
+        table a{
+        text-decoration: none;
+        color: #ccc;
+        //border:4px solid;
+       width: 100%;
+    }
+   
+           td{
+          font-size:15px;
+        color:#88ace0;
+        font-family:Verdana;
+        text-align: center;
+
+        
+        }
+          th{
+          font-size:15px;
+            color:#88ace0;
+        font-family:Verdana;
+        height: 10px;
+        width: 100px;
+
+        }
+       
+            input[type=submit]{
+            text-align:center;
+            font-family:verdana;
+            height:50px;
+            font-size:15px;
+            width:80%;
+            padding:5px;
+            background-color:#88ace0;
+            margin:auto;
+            margin-top:50px;
+            color:White;
+           border-radius:20px;
+           border: 0px;
+           margin-left:0px; }
+        #main{
+        //background-image:url("{% static 'images/cpo4.jpeg' %}");
+
+        //background-image:linear-gradient(to left bottom,blue,skyblue,#499df5);
+        margin-top:0px;
+        margin-bottom:0px; 
+        }
+    </style>
+</head>
+<body>
+<!--<h1>Welcome</h1>-->
+
+<div id="outer">
+    <!-- <div id="header"> 
+        <div id="logo">
+            <img src="{%static 'images/logo1.png' %}" width="100" height="150"/>
+
+            <img src="{%static 'images/po.png' %}" width="120" height="150"/>
+        </div>
+        <div id="banner">
+            CALL PROCESSING OPTIMIZATION
+        </div>
+    </div> -->
+    <div id="menu">
+        <div class="logo"><h1>CPO</h1></div>
+        <ul >
+            <li><a href="{% url 'adminzone:adminhome' %}">AdminHome</a></li>
+            <li ><a href="{% url 'adminzone:enquiries' %}" >Enquiries</a></li>
+            <li ><a href="{% url 'adminzone:complains' %}">Complains</a></li><!-- when we enter into another app of html page namespace:views'name-->
+            <li ><a href="{% url 'adminzone:customerinfo' %}">CustomerInfo</a></li>
+            <li ><a href="{% url 'adminzone:knowledgebase' %}">Knowledgebase</a></li>
+            <li ><a href="{% url 'adminzone:logout' %}">Logout</a></li>
+        </ul>
+    </div>
+
+    <div id="main" style="overflow-x:auto;">
+       <!-- {% if name %}
+        <p>Hello,{{name}}</p>
+        {% endif %}-->
+        <h2>View All Customers</h2>
+        <table border="0" cellspacing="20" cellspacing="1" style="width:100%;margin:0 auto">
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>Nationality</th>
+                <th>Contact No</th>
+                <th>Email Address</th>
+                <th>Connect Date</th>
+                <th>Delete</th>
+
+            </tr>
+
+            {% for c in cust %}
+            <tr>
+                <td>{{c.name}}</td>
+                <td>{{c.gender}}</td>
+                <td>{{c.address}}</td>
+                <td>{{c.nationality}}</td>
+                <td>{{c.contactno}}</td>
+                <td>{{c.emailaddress}}</td>
+                <td>{{c.connectdate}}</td>
+                <td><a href="{% url 'adminzone:deletecustomerinfo' emailaddress=c.emailaddress %}">Delete</a></td>
+            </tr>
+            <!-- for string url is passed in this way -->
+            {% endfor %}
+        </table>
+    </div>
+    <div id="footer">
+        <div id="footerl">Copyright &copy; to CPO</div>
+        <div id="footerr">Developed By-Leena Jaswani</div>
+
+    </div>
+</div>
+
+
+
+</body>
+</html>

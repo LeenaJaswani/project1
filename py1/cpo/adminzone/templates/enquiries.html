@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Call Processing Optimization</title>
+    {% load static %}
+     <link href="{% static 'css/stylea.css' %}" rel="stylesheet"/>
+     <link rel="icon" type="image/ico" href="{% static 'images/logo.jpg' %}"/>
+    <style>
+        h2{
+           font-size:30px;
+            color:#88ace0;
+            font-family:Bookman Old Style;
+            text-align:center;
+            margin-top: 100px;
+        }
+        table a{
+        text-decoration: none;
+        color: #ccc;
+        //border:4px solid;
+       width: 100%;
+    }
+   
+           td{
+          font-size:15px;
+        color:#88ace0;
+        font-family:Verdana;
+        text-align: center;
+
+        
+        }
+          th{
+          font-size:15px;
+            color:#88ace0;
+        font-family:Verdana;
+        height: 10px;
+        width: 100px;
+
+        }
+       
+            input[type=submit]{
+            text-align:center;
+            font-family:verdana;
+            height:50px;
+            font-size:15px;
+            width:80%;
+            padding:5px;
+            background-color:#88ace0;
+            margin:auto;
+            margin-top:50px;
+            color:White;
+           border-radius:20px;
+           border: 0px;
+           margin-left:0px; }
+        #main{
+        //background-image:url("{% static 'images/cpo4.jpeg' %}");
+
+        //background-image:linear-gradient(to left bottom,blue,skyblue,#499df5);
+      //  margin-top:-25px;
+       // margin-bottom:-60px; 
+        }
+    </style>
+</head>
+<body>
+<!--<h1>Welcome</h1>-->
+
+<div id="outer">
+    <!-- <div id="header"> 
+        <div id="logo">
+            <img src="{%static 'images/logo1.png' %}" width="100" height="150"/>
+
+            <img src="{%static 'images/po.png' %}" width="120" height="150"/>
+        </div>
+        <div id="banner">
+            CALL PROCESSING OPTIMIZATION
+        </div>
+   </div> -->
+    <div id="menu">
+        <div class="logo"><h1>CPO</h1></div>
+        <ul >
+            <li><a href="{% url 'adminzone:adminhome' %}">AdminHome</a></li>
+            <li ><a href="{% url 'adminzone:enquiries' %}" >Enquiries</a></li>
+            <li ><a href="{% url 'adminzone:complains' %}">Complains</a></li><!-- when we enter into another app of html page namespace:views'name-->
+            <li ><a href="{% url 'adminzone:customerinfo' %}">CustomerInfo</a></li>
+            <li ><a href="{% url 'adminzone:knowledgebase' %}">Knowledgebase</a></li>
+            <li ><a href="{% url 'adminzone:logout' %}">Logout</a></li>
+        </ul>
+    </div>
+
+    <div id="main" style="overflow-x:auto;">
+       <!-- {% if name %}
+        <p>Hello,{{name}}</p>
+        {% endif %}-->
+        <h2>View all Enquiries</h2>
+        <table border="1" cellspacing="0"  cellpadding="15" style="width:80%;margin:0 auto">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>Contact No.</th>
+                <th>Email address</th>
+                <th>Enquiry</th>
+                <th>Date</th>
+                <th>Delete Enquiry</th>
+            </tr>
+            {% for e in enq %}
+                <tr>
+                 <td>{{e.id}}</td>
+                <td>{{e.name}}</td>
+                <td>{{e.gender}}</td>
+                <td>{{e.address}}</td>
+                <td>{{e.contactno}}</td>
+                <td>{{e.emailaddress}}</td>
+                <td>{{e.enquirytext}}</td>
+                <td>{{e.enquirydate}}</td>
+                  <td>
+                      <a href="{% url 'adminzone:deleteenquiries' e.id %}">Delete</a>
+                  </td>
+                </tr>
+
+            {% endfor %}
+        </table>
+    </div>
+    <div id="footer">
+        <div id="footerl">Copyright &copy; to CPO</div>
+        <div id="footerr">Developed By-Leena Jaswani</div>
+
+    </div>
+</div>
+
+
+
+</body>
+</html>
